@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Brain Tumor Classification</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="../static/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="../static/font/flaticon.css">
+
+<script type = "text/javascript">
+  function reDirect() {
+     window.open('https://medium.com/@sartajbhuvaji/brain-tumor-classification-546a72d4103b', '_blank');
+  }
+//-->
+</script>
+
+</head>
+<body id="top" class="homepage"><!-- Homepage class is only used on the homepage in conjunction with the slider -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="logo" class="fl_left"> 
+      <!-- ################################################################################################ -->
+      <h1><a href="index.html">B.E Project</a></h1>
+      <!-- ################################################################################################ -->
+    </div>
+    <nav id="mainav" class="fl_right">
+      <ul class="clear">
+        <!-- ################################################################################################ -->
+        <li class="active"><a href="index.html">Home</a></li>
+        <li><a class="drop" href="#">Information</a>
+          <ul>
+            <li><a href="doctor page/doctor_info.html">Doctor Information</a></li>
+	    <li><a href="faq/index.html">FAQ's</a></li>
+          </ul>
+        </li>
+
+        <li><a class="drop" href="#">Results</a>
+          <ul>
+            <li><a href="results/ANN-result.html">Artificial Neural Network Models</a></li>
+            <li><a href="results/CNN-result.html">Convolution Neural Network Models</a></li>
+            <li><a href="results/TNN-result.html">Transfer Learning Models</a></li>
+            <li><a href="results/Summary-Result.html">Summary</a></li>
+          </ul>
+        </li>
+
+
+        <li><a href="about us/index.html">About Us</a></li>
+        <!-- ################################################################################################ -->
+      </ul>
+    </nav>
+  </header>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div id="slider">
+  <div class="flexslider basicslider">
+    <ul class="slides">
+      <!-- ################################################################################################ -->
+      <li class="bgded" style="background-image:url('../static/images/demo/slider/01.jpg')">
+        <article class="flex-content">
+          <h2 class="heading underlined">Brain Tumor Classification</h2>
+          <p><font size="5">Classifying Brain Tumor</font> <br></p>
+          <p><a href="http://ec2-13-233-45-80.ap-south-1.compute.amazonaws.com:5000/" class="btn" style="margin:10px" width:"200px" href="#">Brain Tumor Classification</a>
+			 <a href="http://ec2-35-154-142-106.ap-south-1.compute.amazonaws.com:8080/" class="btn"   style="margin:10px" width:"200px" href="#">Brain Tumor Segmentation</a></p>
+        </article>
+      </li>
+      <li class="bgded" style="background-image:url('../static/images/demo/slider/02.jpg')">
+        <article class="flex-content">
+          <h2 class="heading underlined">Deep Learning Algorithms</h2>
+          <p><font size="5">Artificial Neural Networks <br> Convolution Neural Networks</font> <br></p>
+          <p><a href="http://ec2-13-127-168-40.ap-south-1.compute.amazonaws.com:5000/" class="btn" style="margin:10px" width:"200px" href="#">Brain Tumor Classification</a>
+			 <a class="btn" href="http://ec2-13-232-176-228.ap-south-1.compute.amazonaws.com:8080/" style="margin:10px" width:"200px" href="#">Brain Tumor Segmentation</a></p>	
+        </article>
+      </li>
+      <li class="bgded" style="background-image:url('../static/images/demo/slider/03.jpg')">
+        <article class="flex-content">
+          <h2 class="heading underlined">Predictions</h2>
+          <p><font size="5">Machines are Learning</font><br></p>
+          <p><a href="http://ec2-13-127-168-40.ap-south-1.compute.amazonaws.com:5000/" class="btn" style="margin:10px" width:"200px" href="#">Brain Tumor Classification</a>
+			 <a class="btn" href="http://ec2-13-232-176-228.ap-south-1.compute.amazonaws.com:8080/" style="margin:10px" width:"200px" href="#">Brain Tumor Segmentation</a></p>
+        </article>
+      </li>
+      <!-- ################################################################################################ -->
+    </ul>
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<div class="container">
+  <div class="row">
+      <h2>Select a file to upload</h2>
+      <p>
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+      </p>
+      {% if filename %}
+      <style>
+        .upload-image{
+          display: none;
+        }
+      </style>
+          <div>
+              <img src="{{ url_for('display_image', filename=filename) }}">
+        
+      </div>
+      <div>
+        The features of {{ details }} detected
+      </div>
+      
+      {% endif %}
+      <form class="upload-image" method="post" action="/" enctype="multipart/form-data">
+          <dl>
+              <p>
+                  <input type="file" name="file" class="form-control" autocomplete="off" required>
+              </p>
+          </dl>
+          <p>
+              <input type="submit" value="Submit" class="btn btn-info">
+          </p>
+      </form>
+  </div>
+  </div>
+<div class="wrapper row3">
+  <main class="container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div class="center clear">
+      <div class="btmspace-80">
+        <h2 class="font-x2 bold underlined">Abstract</h2>
+        <p>Brain tumor is considered as one of the aggressive diseases, among children and adults. Brain tumors account for 85 to 90 percent of all primary Central Nervous System(CNS) tumors. Every year, around 11,700 people are diagnosed with a brain tumor. The 5-year survival rate for people with a cancerous brain or CNS tumor is approximately 34 percent for men and 36 percent for women. BrainTumors are classiﬁed as: Benign Tumor, Malignant Tumor, Pituitary Tumor, etc. Proper treatment planning and accurate diagnostics should be implemented to improve life expectancy of the patients.
+          The best technique to detect brain tumor is Magnetic Resonance Imaging (MRI). Huge amount of data images are generated through the scans. These images are examined by the radiologist. Manual examination can be error prone due to the level of complexities involved in brain tumors and their properties.
+          Application of automated classiﬁcation techniques using Machine Learning(ML) and Artiﬁcial Intelligence(AI) has consistently shown higher accuracy than manual classiﬁcation.</p>
+          
+          <p> Hence, we propose performing detection and classiﬁcation by using Deep Learning Algorithms using Convolution Neural Network (CNN) and Artiﬁcial Neural Network (ANN) to achieve higher accuracy.
+          The MRI images are classiﬁed using different ’Deep Learning Models of ANN and CNN’. These models have permutations and combinations of different ’Network Parameters’. The model with the highest accuracy is selected and deployed.
+          The aim of the project is to achieve higher accuracy and reliability for real world MRI data using AI and ML domain knowledge. Further to accurately indicate positional change in tumor and to provide some suggestions for treatment by providing ease of access of the software through cloud and mobile applications, web browsers platforms.
+          </p>
+      </div>
+      <div class="group">
+        <h2 class="font-x2 bold underlined">Objectives</h2>
+        <article class="one_quarter first"><a href="#"><i class="btmspace-15 fa fa-3x flaticon-human-brain"></i></a>
+          <h4 class="font-x1 underlined">Tumor Detection</h4>
+          <p>Using Neural Networks to identify if the MRI as tumor present or not.</p>
+        </article>
+        <article class="one_quarter"><a href="#"><i class="btmspace-15 fa fa-3x flaticon-brain-2"></i></a>
+          <h4 class="font-x1 underlined">Tumor Classification</h4>
+          <p>To classify tumors using Deep Learning Classification Algorithms.</p>
+        </article>
+        <article class="one_quarter"><a href="#"><i class="btmspace-15 fa fa-3x flaticon-brain"></i></a>
+          <h4 class="font-x1 underlined">Tumor Segmentation</h4>
+          <p>To segrigate tumor from MRI.</p>
+        </article>
+        <article class="one_quarter"><a href="#"><i class="btmspace-15 fa fa-3x flaticon-change"></i></a>
+          <h4 class="font-x1 underlined">Tumor Movements</h4>
+          <p>To identify tumor positional changes.</p>
+        </article>
+      </div>
+    </div>
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row1 bgded" style="background-image:url('../static/images/demo/backgrounds/01.jpg');">
+  <div class="overlay">
+    <div class="container clear"> 
+      <!-- ################################################################################################ -->
+      <div class="btmspace-80 center">
+        <h2 class="font-x2 bold underlined">Best Model Statistics</h2>
+        <p>Here we present the statistics of the deployed model.</p>
+      </div>
+      <ul class="pr-charts nospace group center">
+        <li class="pr-chart-ctrl" data-animate="false">
+          <div class="pr-chart" data-percent="96"><i></i></div>
+          <p>Accuracy</p>
+        </li>
+        <li class="pr-chart-ctrl" data-animate="false">
+          <div class="pr-chart" data-percent="4"><i></i></div>
+          <p>Loss(*10)</p>
+        </li>
+        <li class="pr-chart-ctrl" data-animate="false">
+          <div class="pr-chart" data-percent="8"><i></i></div>
+          <p>Validation Loss(*10)</p>
+        </li>
+        <li class="pr-chart-ctrl" data-animate="false">
+          <div class="pr-chart" data-percent="94"><i></i></div>
+          <p>Validation Accuracy</p>
+        </li>
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+  <section class="container clear"> 
+    <!-- ################################################################################################ -->
+    <div class="btmspace-80 center">
+      <h2 class="font-x2 bold underlined">Categories</h2>
+      <p>Here we put information of IV classes.</p>
+    </div>
+    <div class="group latest">
+      <article class="one_quarter first">
+        <figure><img src="../static/images/demo/n_t.jpg" alt="">
+        </figure>
+        <h3 class="font-x1 heading">No Tumor</h3>
+        <p>The Brain scan is normal. No Tumor is detected.</p>
+        <!--<p><a href="#">Read More &raquo;</a></p> -->
+      </article>
+      <article class="one_quarter">
+        <figure><img src="../static/images/demo/gt.jpg" alt="">
+        </figure>
+        <h3 class="font-x1 heading">Glioma Tumor</h3>
+        <p>A glioma is a type of tumor that starts in the glial cells of the brain or the spine. Gliomas comprise about 30 percent of all brain tumors and central nervous system tumours, and 80 percent of all malignant brain tumours.</p>
+        <p><a href="https://en.wikipedia.org/wiki/Glioma">Read More &raquo;</a></p>
+      </article>
+      <article class="one_quarter">
+        <figure><img src="../static/images/demo/mt.jpg" alt="">
+        </figure>
+        <h3 class="font-x1 heading">Malignant Tumor</h3>
+        <p>A malignant tumor contrasts with a non-cancerous benign tumor in that a malignancy is not self-limited in its growth, is capable of invading into adjacent tissues, and may be capable of spreading to distant tissues.</p>
+        <p><a href="https://en.wikipedia.org/wiki/Malignancy">Read More &raquo;</a></p>
+      </article>
+      <article class="one_quarter">
+        <figure><img src="../static/images/demo/pt.jpg" alt="">
+        </figure>
+        <h3 class="font-x1 heading">Pituary Tumor</h3>
+        <p>Pituitary adenomas are tumors that occur in the pituitary gland. Pituitary adenomas are generally divided into three categories dependent upon their biological functioning: benign adenoma, invasive adenoma, and carcinomas.</p>
+        <p><a href="https://en.wikipedia.org/wiki/Pituitary_adenoma">Read More &raquo;</a></p>
+      </article>
+    </div>
+    <!-- ################################################################################################ -->
+    <div class="clear"></div>
+  </section>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row4">
+  <footer id="footer" class="clear"> 
+    <!-- ################################################################################################ -->
+    <div class="one_quarter first">
+      <h6 class="title">College Details</h6>
+      <address class="btmspace-15">
+      PES Modern College Of Engineering.<br>
+      Computer Department 2020<br>
+      1186/A, Off J.M. Road, Shivajinagar,<br>
+      Pune.<br>
+      411005
+      </address>
+      <ul class="nospace">
+        <li class="btmspace-10"><span class="fa fa-phone"></span> (020) 2553 3638</li>
+        <li><span class="fa fa-envelope-o"></span> pesmcoe@moderncoe.edu.in</li>
+	<p><a href="http://moderncoe.edu.in/">Website &raquo;</a></p>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="title">Guide Details</h6>
+      <ul class="nospace linklist">
+        <li><b>Project Guide:</b></li>
+        <li>Mr. Santosh Nagargoje</li><br>
+        
+        
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="title">From The Blog</h6>
+      <article>
+        <h2 class="font-x1 nospace"><a href="#">Date</a></h2>
+        <time class="smallfont" datetime="2020-02-09">Sunday, 6<sup>th</sup>February 2020</time>
+      
+        <p>  
+        <h2 class="font-x1 nospace"><a href="#">Group Id</a></h2>
+        <p>02</p>
+        </p>
+
+      </article>
+    </div>
+    <div class="one_quarter">
+      <h6 class="title">Grab Our Article !</h6>
+      <form method="get">
+        <fieldset>
+          <legend>Newsletter:</legend>
+          
+          <button onclick="reDirect()">Project Article!</button>
+
+        </fieldset>
+      </form>
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="../static/layout/scripts/jquery.min.js"></script>
+<script src="../static/layout/scripts/jquery.backtotop.js"></script>
+<script src="../static/layout/scripts/jquery.mobilemenu.js"></script>
+<!-- IE9 Placeholder Support -->
+<script src="../static/layout/scripts/jquery.placeholder.min.js"></script>
+<!-- / IE9 Placeholder Support -->
+<!-- Homepage specific -->
+<script src="../static/layout/scripts/jquery.flexslider-min.js"></script>
+<script src="../static/layout/scripts/jquery.easypiechart.min.js"></script>
+<div id="preloader"><div></div></div><!-- Basic page preloader -->
+<script>$(window).load(function(){$("#preloader div").delay(500).fadeOut();$("#preloader").delay(800).fadeOut("slow");});</script>
+<!-- / Homepage specific -->
+</body>
+</html>
