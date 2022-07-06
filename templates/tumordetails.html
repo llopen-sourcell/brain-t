@@ -1,0 +1,207 @@
+<html>
+<head>
+<title>Brain Tumor Classification</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="../static/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="../static/font/flaticon.css">
+
+<script type = "text/javascript">
+  function reDirect() {
+     window.open('https://medium.com/@sartajbhuvaji/brain-tumor-classification-546a72d4103b', '_blank');
+  }
+//-->
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+  <div class="wrapper row1">
+    <header id="header" class="clear">
+      <div id="logo" class="fl_left"> 
+        <!-- ################################################################################################ -->
+        <h1><a href="/">B.E Project</a></h1>
+        <!-- ################################################################################################ -->
+      </div>
+      <nav id="mainav" class="fl_right">
+        <ul class="clear">
+          <!-- ################################################################################################ -->
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a class="drop" href="#">Information</a>
+            <ul>
+              <li><a href="doctor page/doctor_info.html">Doctor Information</a></li>
+        <li><a href="faq/index.html">FAQ's</a></li>
+            </ul>
+          </li>
+  
+          <li><a class="drop" href="#">Results</a>
+            <ul>
+              <li><a href="results/ANN-result.html">Artificial Neural Network Models</a></li>
+              <li><a href="results/CNN-result.html">Convolution Neural Network Models</a></li>
+              <li><a href="results/TNN-result.html">Transfer Learning Models</a></li>
+              <li><a href="results/Summary-Result.html">Summary</a></li>
+            </ul>
+          </li>
+  
+  
+          <li><a href="about us/index.html">About Us</a></li>
+          <!-- ################################################################################################ -->
+        </ul>
+      </nav>
+    </header>
+  </div>
+<p><h1 align="center">Brain Image</h1></p>
+
+<div class="container">
+<div class="row">
+    <h2 class="upload-row">Select a file to upload</h2>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+    {% if filename %}
+      <style>
+        .upload-image{
+          display: none;
+
+
+        }
+        .upload-row{
+          display: none;
+        }
+        .wrapper{
+          display: flex;
+          padding: 20px;
+        }
+        .first{
+
+          padding: 20px;
+        }
+        .second{
+          padding: 20px;
+        }
+      </style>
+      <div class="wrapper">
+
+      
+        <div class="first">
+            <img src="{{ url_for('display_image', filename=filename) }}">
+			
+		</div>
+    <div class="second">
+      <h2><u>{{ details }}</u></h2>
+      {{tumor}}
+      {% if flag==0 %}  
+      <h2>People may experience</h2>
+      {% endif %}
+      <ul>
+        {% for i in range(0, len) %}
+  
+        <li>{{symptoms[i]}}</li>
+        {% endfor %}
+      </ul> 
+    </div>
+  </div>
+		<div>
+			
+		</div>
+		
+    {% endif %}
+    <form class="upload-image" method="post" action="/" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="Submit" class="btn btn-info">
+        </p>
+    </form>
+</div>
+
+</div>
+</body>
+<div class="wrapper row4">
+  <footer id="footer" class="clear"> 
+    <!-- ################################################################################################ -->
+    <div class="one_quarter first">
+      <h6 class="title">College Details</h6>
+      <address class="btmspace-15">
+      PES Modern College Of Engineering.<br>
+      Computer Department 2020<br>
+      1186/A, Off J.M. Road, Shivajinagar,<br>
+      Pune.<br>
+      411005
+      </address>
+      <ul class="nospace">
+        <li class="btmspace-10"><span class="fa fa-phone"></span> (020) 2553 3638</li>
+        <li><span class="fa fa-envelope-o"></span> pesmcoe@moderncoe.edu.in</li>
+	<p><a href="http://moderncoe.edu.in/">Website &raquo;</a></p>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="title">Guide Details</h6>
+      <ul class="nospace linklist">
+        <li><b>Project Guide:</b></li>
+        <li>Mr. Santosh Nagargoje</li><br>
+        
+        
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="title">From The Blog</h6>
+      <article>
+        <h2 class="font-x1 nospace"><a href="#">Date</a></h2>
+        <time class="smallfont" datetime="2020-02-09">Sunday, 6<sup>th</sup>February 2020</time>
+      
+        <p>  
+        <h2 class="font-x1 nospace"><a href="#">Group Id</a></h2>
+        <p>02</p>
+        </p>
+
+      </article>
+    </div>
+    <div class="one_quarter">
+      <h6 class="title">Grab Our Article !</h6>
+      <form method="get">
+        <fieldset>
+          <legend>Newsletter:</legend>
+          
+          <button onclick="reDirect()">Project Article!</button>
+
+        </fieldset>
+      </form>
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="../static/layout/scripts/jquery.min.js"></script>
+<script src="../static/layout/scripts/jquery.backtotop.js"></script>
+<script src="../static/layout/scripts/jquery.mobilemenu.js"></script>
+<!-- IE9 Placeholder Support -->
+<script src="../static/layout/scripts/jquery.placeholder.min.js"></script>
+<!-- / IE9 Placeholder Support -->
+<!-- Homepage specific -->
+<script src="../static/layout/scripts/jquery.flexslider-min.js"></script>
+<script src="../static/layout/scripts/jquery.easypiechart.min.js"></script>
+<div id="preloader"><div></div></div><!-- Basic page preloader -->
+<script>$(window).load(function(){$("#preloader div").delay(500).fadeOut();$("#preloader").delay(800).fadeOut("slow");});</script>
+<!-- / Homepage specific -->
+
+</html>
