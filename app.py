@@ -27,13 +27,28 @@ UPLOAD_FOLDER = 'static/uploads/'
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
- 
+
+meningioma='''
+Brain tumor is considered as one of the aggressive diseases, among children and adults. Brain tumors account for 85 to 90 percent of all primary Central Nervous System(CNS) tumors. Every year, around 11,700 people are diagnosed with a brain tumor. The 5-year survival rate for people with a cancerous brain or CNS tumor is approximately 34 percent for men and 36 percent for women. BrainTumors are classiﬁed as: Benign Tumor, Malignant Tumor, Pituitary Tumor, etc. Proper treatment planning and accurate diagnostics should be implemented to improve life expectancy of the patients. The best technique to detect brain tumor is Magnetic Resonance Imaging (MRI).
+'''
+glioma='''
+Brainove life expectancy of the patients. The best technique to detect brain tumor is Magnetic Resonance Imaging (MRI).
+'''
+pituitary='''
+
+'''
+notumor='''
+'''
+
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
  
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-     
- 
+gliomaSymptoms=["Nausea or vomiting","Muscle Weakness or weakness in one side","Double vision or vison disorder"]
+meningiomaSymptoms={}
+pituitarySymptoms={}
+notumor={}
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -55,7 +70,17 @@ def upload_image():
         details=predict(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
         #flash(a)
-        return render_template('index.html', filename=filename,details=details[0])
+        if details[0] == "meningioma":
+            return render_template('tumordetails.html', filename=filename,details=details[0].capitalize(),tumor=meningioma,symptoms=meningiomaSymptoms,len=len(meningiomaSymptoms))
+        if details[0] == "glioma":
+            return render_template('tumordetails.html', filename=filename,details=details[0].capitalize(),tumor=glioma,symptoms=gliomaSymptoms,len=len(gliomaSymptoms))
+
+        if details[0] == "pituitary":
+            return render_template('tumordetails.html', filename=filename,details=details[0].capitalize(),tumor=pituitary,symptoms=pituitarySymptoms,len=len(pituitarySymptoms))
+        
+        if details[0] == "notumor":
+            return render_template('tumordetails.html', flag=1, filename=filename,details="No Tumor",len=0,tumor=notumor)
+        
     else:
         flash('Allowed image types are - png, jpg, jpeg, gif')
         return redirect(request.url)
@@ -66,4 +91,4 @@ def display_image(filename):
     return redirect(url_for('static', filename='uploads/' + filename), code=301)
  
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
